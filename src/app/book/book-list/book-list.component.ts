@@ -11,6 +11,13 @@ import { BookService } from '../book.service';
 export class BookListComponent implements OnInit {
   books: Array<Book> = [];
   constructor(private bookService: BookService) {}
+  selected: Boolean = false;
+  selectedBook!: Book;
+
+  onSelected (book: Book): void {
+    this.selected = true;
+    this.selectedBook = book;
+  }
 
   getBooks(): void {
     this.bookService.getBooks().subscribe((books) => {
